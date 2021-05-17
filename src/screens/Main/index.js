@@ -1,5 +1,5 @@
 // icons - img
-import logo from '../../assets/logo2.svg'
+import logo from '../../assets/logo.svg'
 
 // components
 import CssBaseline from '@material-ui/core/CssBaseline'

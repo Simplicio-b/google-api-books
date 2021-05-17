@@ -1,3 +1,6 @@
+// libs
+import { useHistory } from 'react-router-dom'
+
 // icons - img
 import SearchIcon from '@material-ui/icons/Search'
 
@@ -7,10 +10,11 @@ import { useStyles } from './styles'
 function InputSearch() {
     
     const classes = useStyles()
+    const history = useHistory()
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log('asasa')
+        history.push('search')
     }
 
     return (

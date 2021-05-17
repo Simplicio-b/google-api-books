@@ -3,11 +3,12 @@ import { makeStyles } from '@material-ui/core/styles'
 export const useStyles = makeStyles((theme) => ({
     form: {
         padding: '8px 10px',
-        height: 44,
+        height: 40,
         display: 'flex', 
         width: '50%', 
         borderRadius: 24,
-        boxShadow: '0 2px 5px 1px rgb(64 60 67 / 16%)' 
+        boxShadow: '0 2px 5px 1px rgb(64 60 67 / 16%)',
+        backgroundColor: '#fff' 
     },
     input: {
         border: 'none',
