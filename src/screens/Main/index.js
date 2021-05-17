@@ -1,18 +1,26 @@
+// icons - img
+import logo from '../../assets/logo2.svg'
+
+// components
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Container from '@material-ui/core/Container'
+import InputSearch from '../../components/InputSearch'
+
+// styles
+import { useStyles } from './styles'
+
 function Main() {
+
+    const classes = useStyles()
+
     return (
-        <>
-            <h1>Pesquise por titulos</h1>
-            <input type="text" />
-            <button>buscar</button>
-            <br />
-            <div>
-                <p>LIVRO 1</p>
-                <p>LIVRO 3</p>
-                <p>LIVRO 5</p>
-                <p>LIVRO 10</p>
-                <p>LIVRO 20</p>
-            </div>
-        </>
+        <div className={classes.root}>
+            <CssBaseline />
+            <Container fixed className={classes.container}>
+                <img src={logo} className={classes.image} alt="404 Pagina não encontrada!!!" />
+                <InputSearch />
+            </Container>
+        </div>
     )
 }
 

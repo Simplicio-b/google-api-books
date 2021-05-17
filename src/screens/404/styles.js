@@ -9,7 +9,8 @@ export const useStyles = makeStyles((theme) => ({
         flexDirection: 'column'
     },
     image: {
-        width: 350, height: 350
+        width: 350, 
+        height: 350
     },
     link: {
         color: '#6c63ff',
