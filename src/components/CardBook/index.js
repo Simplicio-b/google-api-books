@@ -23,7 +23,7 @@ function CardBook() {
 
             <div style={{ flex: 9, padding: "10px 30px 10px 25px"  }} clssName={classes.contentText}>
 
-                <Link style={{ textDecoration: 'none', color: '#6c63ff' }} >
+                <Link style={{ textDecoration: 'none', color: '#6c63ff' }} to="/details">
                     <Typography variant="h5" component="h2">
                         Harry Potter e o calice de fogo
                     </Typography>

@@ -1,3 +1,10 @@
+// redux
+import { connect } from 'react-redux'
+import {
+    handleInputSearch,
+    handleBtnSearch
+} from '../../store/actions'
+
 // libs
 import { useHistory } from 'react-router-dom'
 
@@ -7,19 +14,29 @@ import SearchIcon from '@material-ui/icons/Search'
 // styles
 import { useStyles } from './styles'
 
-function InputSearch() {
-    
+function InputSearch(props) {
     const classes = useStyles()
     const history = useHistory()
 
+    const {
+        search,
+        // actions
+        handleInputSearch,
+        handleBtnSearch
+    } = props
+
     const handleSubmit = (event) => {
         event.preventDefault()
-        history.push('search')
+        if(search.length !== 0) {
+            handleBtnSearch(search)
+            history.push('search')
+        }
     }
 
     return (
         <form className={classes.form} onSubmit={handleSubmit} method="POST">
-            <input type="text" className={classes.input} />
+            <input type="text" value={search} onChange={e => handleInputSearch(e.target.value)} className={classes.input} />
+
             <button type="submit" className={classes.btn}>
                 <SearchIcon style={{ color: "#6c63ff" }} />
             </button>
@@ -27,4 +44,11 @@ function InputSearch() {
     )
 }
 
-export default InputSearch
+const mapStateToProps = (state) => ({
+    search: state.reducer.search_input
+})
+
+export default connect(mapStateToProps, {
+    handleInputSearch,
+    handleBtnSearch
+})(InputSearch)

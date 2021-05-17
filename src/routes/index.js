@@ -6,7 +6,7 @@ import {
 
 // Screens
 import Error404 from '../screens/404'
-import BookDetais from '../screens/Book'
+import BookDetais from '../screens/BookDetails'
 import SearchResult from '../screens/SearchResult'
 import Main from '../screens/Main'
 
