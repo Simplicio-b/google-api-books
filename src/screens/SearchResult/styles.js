@@ -16,5 +16,8 @@ export const useStyles = makeStyles((theme) => ({
         flexDirection: 'row',
         justifyContent: 'space-between',
         borderBottom: '1.8px solid #ddd' 
+    },
+    contentPagination: {
+        display: 'flex', justifyContent: 'center', alignItems: 'center', paddingBottom: 30
     }
 }))

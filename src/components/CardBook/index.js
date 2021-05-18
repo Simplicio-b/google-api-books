@@ -2,10 +2,7 @@
 import { Link } from 'react-router-dom'
 
 // components
-import Typography from '@material-ui/core/Typography';
-
-// icons - img
-import img from '../../assets/mockimg.jpeg'
+import Typography from '@material-ui/core/Typography'
 
 // styles
 import { useStyles } from './styles'
@@ -36,7 +33,7 @@ function CardBook({ data }) {
                 </Typography>
 
                 <Typography variant="body2" gutterBottom>
-                    {data.searchInfo.textSnippet.replace(/<(.|\n)*?>/ig, '')}
+                    {data.searchInfo ? data.searchInfo.textSnippet.replace(/<(.|\n)*?>/ig, '') : ''}
                 </Typography>
             </div>
         </div>

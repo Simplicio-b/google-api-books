@@ -12,6 +12,7 @@ import logo from '../../assets/logo.svg'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
 import InputSearch from '../../components/InputSearch'
+import Grid from '@material-ui/core/Grid'
 
 // styles
 import { useStyles } from './styles'
@@ -36,8 +37,12 @@ function Main(props) {
         <div className={classes.root}>
             <CssBaseline />
             <Container fixed className={classes.container}>
-                <img src={logo} className={classes.image} alt="404 Pagina não encontrada!!!" />
-                <InputSearch />
+                {/* <Grid item xs={12} > */}
+                    <img src={logo} className={classes.image} alt="logo" />
+                {/* </Grid> */}
+                {/* <Grid style={{ backgroundColor: "#409" }} item xs={12}> */}
+                    <InputSearch />
+                {/* </Grid> */}
             </Container>
         </div>
     )

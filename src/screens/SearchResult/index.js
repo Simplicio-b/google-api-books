@@ -13,6 +13,8 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
+import Pagination from '@material-ui/lab/Pagination'
+import Grid from '@material-ui/core/Grid'
 import InputSearch from '../../components/InputSearch'
 import CardBook from '../../components/CardBook'
 
@@ -74,7 +76,10 @@ function SearchResult(props) {
                             <CardBook key={index} data={el} />
                         )) : ''}
                     </Box>
-                </Container>
+                    <Grid item xs={12} className={classes.contentPagination} >
+                        <Pagination count={70} size="small" shape="rounded" />
+                    </Grid>
+                </Container>    
         </>
     )
 }
