@@ -10,34 +10,33 @@ import img from '../../assets/mockimg.jpeg'
 // styles
 import { useStyles } from './styles'
 
-function CardBook() {
-
+function CardBook({ data }) {
     const classes = useStyles()
 
     return (
         <div className={classes.root}>
 
             <div style={{ flex: 3 }} className={classes.contentImg}>
-                <img src={img} style={{ height: 140 }} alt="capa book" />
+                <img src={data.volumeInfo.imageLinks.thumbnail} style={{ height: 140 }} alt="capa book" />
             </div>
 
             <div style={{ flex: 9, padding: "10px 30px 10px 25px"  }} clssName={classes.contentText}>
 
                 <Link style={{ textDecoration: 'none', color: '#6c63ff' }} to="/details">
-                    <Typography variant="h5" component="h2">
-                        Harry Potter e o calice de fogo
+                    <Typography variant="h5" component="h3">
+                        {data.volumeInfo.title}
                     </Typography>
                 </Link>
 
-                <Typography variant="csubtitle2"  gutterBottom>
-                   <Link style={{ textDecoration: 'none', color: '#6c63ff' }}>J.K Rowling</Link> · 2015
+                <Typography variant="subtitle2"  gutterBottom>
+                    <span style={{ color: '#6c63ff' }}>
+                        {data.volumeInfo.authors ? data.volumeInfo.authors.toString().replace(/,/g, ', ') : ''}
+                    </span>
+                    {' ' + data.volumeInfo.publishedDate}
                 </Typography>
 
                 <Typography variant="body2" gutterBottom>
-                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                   Corporis rem quasi veniam repudiandae debitis quam iure. 
-                   Harum necessitatibus omnis laborum architecto optio, 
-                   odio error consequatur ratione libero molestiae, illum laboriosam?
+                    {data.searchInfo.textSnippet.replace(/<(.|\n)*?>/ig, '')}
                 </Typography>
             </div>
         </div>

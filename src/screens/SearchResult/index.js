@@ -2,6 +2,9 @@ import React from 'react'
 // libs
 import { Link } from 'react-router-dom'
 
+// redux
+import { connect } from 'react-redux'
+
 // components
 import PropTypes from 'prop-types'
 import AppBar from '@material-ui/core/AppBar'
@@ -41,6 +44,10 @@ function SearchResult(props) {
 
     const classes = useStyles()
 
+    const {
+        data,
+    } = props
+
     return (
         <>
             <CssBaseline />
@@ -63,13 +70,18 @@ function SearchResult(props) {
 
                 <Container maxWidth="md" >
                     <Box my={2}>
-                        {
-                            [...new Array(20)].map((element, index) => <CardBook key={index} />)
-                        }
+                        { data.items ? data.items.map((el, index) => (
+                            <CardBook key={index} data={el} />
+                        )) : ''}
                     </Box>
                 </Container>
         </>
     )
 }
 
-export default SearchResult
+const mapStateToProps = (state) => ({
+    data: state.reducer.books_data,
+})
+
+
+export default connect(mapStateToProps, {})(SearchResult)

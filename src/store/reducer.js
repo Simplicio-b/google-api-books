@@ -10,7 +10,6 @@ function reducer(state = INITIAL_STATE, action){
         case "CLEAR_INPUT_SEARCH":
             return { ...state, search_input: '' }
         case "SUCCESS_BOOKS_REQUEST":
-            console.log(action)
             return { ...state, books_data: action.payload }
         default :
             return state
