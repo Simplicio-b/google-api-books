@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 // redux
 import { connect } from 'react-redux'
 import {
-    handlePagination
+    handlePagination,
+    previewData
 } from '../../store/actions'
 
 // components
@@ -57,10 +58,9 @@ function SearchResult(props) {
         page,
         search,
         // actions
-        handlePagination
+        handlePagination,
+        previewData
     } = props
-
-    console.log(matches)
 
     return (
         <>
@@ -91,13 +91,13 @@ function SearchResult(props) {
                     </AppBar>
                 </ElevationScroll>
 
-                <div style={{ height: 60 }} />
+                <div style={{ height: matches ? 60 : 150 }} />
                 <Toolbar />
 
                 <Container maxWidth="md" >
                     <Box my={2}>
                         { data.items ? data.items.map((el, index) => (
-                            <CardBook key={index} data={el} />
+                            <CardBook key={index} data={el} actionFunc={previewData} />
                         )) : ''}
                     </Box>
                     <Grid item xs={12} className={classes.contentPagination} >
@@ -127,7 +127,7 @@ const mapStateToProps = (state) => ({
     search: state.reducer.search_input,
 })
 
-
 export default connect(mapStateToProps, {
-    handlePagination
+    handlePagination,
+    previewData
 })(SearchResult)

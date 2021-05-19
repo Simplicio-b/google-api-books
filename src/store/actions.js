@@ -78,3 +78,7 @@ const requestAPI = (books, startIndex = 0) => {
     const URL_PARAMS = `&filter=partial&printType=books&maxResults=10&startIndex=${startIndex}`
     return fetch(`${API_BASE}/volumes?q=${books}${URL_PARAMS}&key=${AUTHENTICAION}`)
 }
+
+export const previewData = (payload) => {
+    return { type: "PREVIEW_DATA", payload }
+}

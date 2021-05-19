@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 // styles
 import { useStyles } from './styles'
 
-function CardBook({ data }) {
+function CardBook({ data, actionFunc }) {
     const classes = useStyles()
     return (
         <div className={classes.root}>
@@ -18,7 +18,7 @@ function CardBook({ data }) {
 
             <div style={{ flex: 9, padding: "10px 30px 10px 25px"  }} clssName={classes.contentText}>
 
-                <Link style={{ textDecoration: 'none', color: '#6c63ff' }} to="/details">
+                <Link style={{ textDecoration: 'none', color: '#6c63ff' }} onClick={() => actionFunc(data)} to="/details">
                     <Typography variant="h5" component="h3">
                         {data.volumeInfo.title}
                     </Typography>

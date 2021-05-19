@@ -9,8 +9,7 @@ export const useStyles = makeStyles((theme) => ({
     container: {
         display: 'flex',  
         flexDirection: 'column', 
-        height: '100vh',
-        // backgroundColor: "#F5F501"
+        height: '100vh'
     },
     image: {
         width: 180, 
