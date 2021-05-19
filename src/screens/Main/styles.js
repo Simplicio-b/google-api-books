@@ -9,13 +9,22 @@ export const useStyles = makeStyles((theme) => ({
     container: {
         display: 'flex',  
         flexDirection: 'column', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
-        height: '100vh'
+        height: '100vh',
+        // backgroundColor: "#F5F501"
     },
     image: {
         width: 180, 
         height: 180,
         marginBottom: 15
+    },
+    contentLogo: {
+        display: 'flex',  
+        alignItems: 'flex-end',
+        justifyContent: 'center'
+    },
+    contentInput: {
+        display: 'flex',  
+        alignItems: 'flex-start',
+        justifyContent: 'center'
     }
 }))

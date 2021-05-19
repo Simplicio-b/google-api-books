@@ -9,7 +9,6 @@ import { useStyles } from './styles'
 
 function CardBook({ data }) {
     const classes = useStyles()
-
     return (
         <div className={classes.root}>
 

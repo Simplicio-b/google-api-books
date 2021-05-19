@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme) => ({
         color: '#556', 
         // boxShadow: '0 1px 6px 0 rgb(32 33 36 / 28%)', 
         padding: '0px 25px',
-        height: 100,
+        minHeight: 100,
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'row',
@@ -18,6 +18,9 @@ export const useStyles = makeStyles((theme) => ({
         borderBottom: '1.8px solid #ddd' 
     },
     contentPagination: {
-        display: 'flex', justifyContent: 'center', alignItems: 'center', paddingBottom: 30
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        paddingBottom: 30
     }
 }))

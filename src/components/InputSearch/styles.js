@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme) => ({
         padding: '8px 10px',
         height: 40,
         display: 'flex', 
-        width: '50%', 
+        minWidth: '60%', 
         borderRadius: 24,
         boxShadow: '0 2px 5px 1px rgb(64 60 67 / 16%)',
         backgroundColor: '#fff' 

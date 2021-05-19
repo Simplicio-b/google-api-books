@@ -12,7 +12,7 @@ import logo from '../../assets/logo.svg'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Container from '@material-ui/core/Container'
 import InputSearch from '../../components/InputSearch'
-// import Grid from '@material-ui/core/Grid'
+import Grid from '@material-ui/core/Grid'
 
 // styles
 import { useStyles } from './styles'
@@ -37,12 +37,12 @@ function Main(props) {
         <div className={classes.root}>
             <CssBaseline />
             <Container fixed className={classes.container}>
-                {/* <Grid item xs={12} > */}
+                <Grid item xs={12} className={classes.contentLogo}>
                     <img src={logo} className={classes.image} alt="logo" />
-                {/* </Grid> */}
-                {/* <Grid style={{ backgroundColor: "#409" }} item xs={12}> */}
+                </Grid>
+                <Grid item xs={12} className={classes.contentInput}>
                     <InputSearch />
-                {/* </Grid> */}
+                </Grid>
             </Container>
         </div>
     )

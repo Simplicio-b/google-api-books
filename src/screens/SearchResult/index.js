@@ -26,6 +26,7 @@ import logo from '../../assets/logo.svg'
 
 // styles
 import { useStyles } from './styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -46,6 +47,7 @@ ElevationScroll.propTypes = {
 }
 
 function SearchResult(props) {
+    const matches = useMediaQuery('(min-width:600px)');
 
     const classes = useStyles()
 
@@ -58,16 +60,30 @@ function SearchResult(props) {
         handlePagination
     } = props
 
+    console.log(matches)
+
     return (
         <>
             <CssBaseline />
 
                 <ElevationScroll {...props}>
-                    <AppBar className={classes.appBar}>
+                    <AppBar className={classes.appBar} 
+                        style={{ 
+                            flexDirection: matches ? 'row' : 'column', 
+                            justifyContent: matches ? 'space-between' : 'space-around', 
+                            minHeight:  matches ? 100 : 180,
+                            paddingBottom: matches ? '' : 10,
+                            paddingTop: matches ? '' : 10,
+                        }}
+                    >
                         <Link to="/">
                             <img 
-                                src={logo} 
+                                style={{ 
+                                    height: matches ? '' : 100,
+                                    width: matches ? '' : 100,
+                                }}
                                 className={classes.image}
+                                src={logo} 
                                 alt="logo" 
                             />
                         </Link>

@@ -38,7 +38,7 @@ function InputSearch(props) {
             <input type="text" value={search} onChange={e => handleInputSearch(e.target.value)} className={classes.input} />
 
             <button type="submit" className={classes.btn}>
-                <SearchIcon style={{ color: "#6c63ff" }} />
+                <SearchIcon style={{ color: "#6c63ff", fontSize: 22 }} />
             </button>
         </form>
     )
