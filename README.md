@@ -28,7 +28,7 @@ Isso vai assegurar que você instale todas as dependências
 ```
 ou
   ```sh
-    yar install
+    yarn install
 ```
 
 Após a instalação das dependências basta executar o sistema utilizando um dos comandos abaixo. 
@@ -37,5 +37,9 @@ Após a instalação das dependências basta executar o sistema utilizando um do
 ```
 ou
   ```sh
-    yar start
+    yarn start
 ```
+
+### Caso não consiga configurar o mesmo
+
+Fiz o deploy da aplicação usando o firebase e o firebase hosting então, caso você não queira clonar o projeto e rodar os comando pode acessar a aplicação [clicando aqui](https://pautasln.web.app/). 
