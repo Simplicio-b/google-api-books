@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 
 // redux
 import { connect } from 'react-redux'
+import {
+    handlePagination
+} from '../../store/actions'
 
 // components
 import PropTypes from 'prop-types'
@@ -48,6 +51,11 @@ function SearchResult(props) {
 
     const {
         data,
+        pagination,
+        page,
+        search,
+        // actions
+        handlePagination
     } = props
 
     return (
@@ -77,7 +85,19 @@ function SearchResult(props) {
                         )) : ''}
                     </Box>
                     <Grid item xs={12} className={classes.contentPagination} >
-                        <Pagination count={70} size="small" shape="rounded" />
+                        {
+                            (pagination !== 0) ? (
+                                <Pagination 
+                                    count={pagination} 
+                                    size="small" 
+                                    shape="rounded" 
+                                    color="primary"
+                                    page={page}
+                                    onChange={e => handlePagination({ page: e.target.innerText, book: search })}
+                                />
+                            ) : ''
+                        }
+                        
                     </Grid>
                 </Container>    
         </>
@@ -86,7 +106,12 @@ function SearchResult(props) {
 
 const mapStateToProps = (state) => ({
     data: state.reducer.books_data,
+    pagination: state.reducer.total_pagination,
+    page: state.reducer.page_number,
+    search: state.reducer.search_input,
 })
 
 
-export default connect(mapStateToProps, {})(SearchResult)
+export default connect(mapStateToProps, {
+    handlePagination
+})(SearchResult)

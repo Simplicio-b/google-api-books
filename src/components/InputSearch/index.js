@@ -28,7 +28,7 @@ function InputSearch(props) {
     const handleSubmit = (event) => {
         event.preventDefault()
         if(search.length !== 0) {
-            handleBtnSearch(search)
+            handleBtnSearch({books: search, startIndex: 0})
             history.push('search')
         }
     }

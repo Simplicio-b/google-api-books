@@ -1,6 +1,8 @@
 const INITIAL_STATE = {
     search_input: '',
-    books_data: []
+    books_data: [],
+    page_number: 0,
+    total_pagination: 0
 }
 
 function reducer(state = INITIAL_STATE, action){
@@ -11,6 +13,10 @@ function reducer(state = INITIAL_STATE, action){
             return { ...state, search_input: '' }
         case "SUCCESS_BOOKS_REQUEST":
             return { ...state, books_data: action.payload }
+        case "TOTAL_PAGES_PAGINATION":
+            return { ...state, total_pagination: action.payload }
+        case "CHANGE_PAGE_PAGINATION" :
+            return { ...state, page_number: action.payload }
         default :
             return state
     }

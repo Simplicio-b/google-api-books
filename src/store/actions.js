@@ -1,3 +1,5 @@
+import { API_BASE, AUTHENTICAION } from '../service/config'
+
 export const handleInputSearch = (payload) => {
     return { type: "HANDLE_INPUT_SEARCH", payload }
 }
@@ -7,26 +9,24 @@ export const clearInputSearch = () => {
 }
 
 export const handleBtnSearch = (payload) => {
+    const {
+        books,
+        startIndex
+    } = payload
+    
     return dispatch => {
-        //  https://developers.google.com/books/docs/v1/reference/bookshelves/list <- docs api
-        const api = 'https://www.googleapis.com/books/v1'
-        const KEY = ''
-        const filter = "&filter=partial&printType=books&maxResults=10&startIndex=0" 
-        //  const filter = ""
-
-        fetch(`${api}/volumes?q=${payload}${filter}&key=${KEY}`)
+        dispatch({  type: "CHANGE_PAGE_PAGINATION", payload: 1 })
+        requestAPI(books, startIndex)
             .then(element => {
                 element.json().then(el => {
-                    pagination(el.totalItems)
-
+                    const pgs = pagination(el.totalItems)
+                    dispatch({  type: "TOTAL_PAGES_PAGINATION", payload: pgs })
                     dispatch({ type: "SUCCESS_BOOKS_REQUEST", payload: el })
                 })
             }).catch(err => {
                 alert("Error: Algo inesperado aconteceu")
                 dispatch({ type: "BAD_BOOKS_REQUEST" })
             })
-
-       
     }
 }
 
@@ -41,8 +41,40 @@ const pagination = (total_items) => {
         pgs = ((total - resto) / 10) + 1
     }
 
-    console.log(total%10)
-    // console.log(el)
-    console.log(total)
-    console.log(pgs)
+    return pgs
+}
+
+export const handlePagination = (payload) => {
+    
+    const {
+        page,
+        book
+    } = payload
+
+    let value_pagination = parseInt(page)
+    let startIndex = 0
+
+    if(value_pagination !== 1) {
+        startIndex = parseInt(value_pagination) * 10
+    }
+
+    return dispatch => {
+        dispatch({  type: "CHANGE_PAGE_PAGINATION", payload: value_pagination })
+        requestAPI(book, startIndex).then(val => {
+            val.json().then(el => {
+                const pgs = pagination(el.totalItems)
+                dispatch({  type: "TOTAL_PAGES_PAGINATION", payload: pgs })
+                dispatch({ type: "SUCCESS_BOOKS_REQUEST", payload: el })
+            })
+        }).catch(err => {
+            alert("Error: Algo inesperado aconteceu")
+            dispatch({ type: "BAD_BOOKS_REQUEST" })
+        })
+    }
+}
+
+
+const requestAPI = (books, startIndex = 0) => {
+    const URL_PARAMS = `&filter=partial&printType=books&maxResults=10&startIndex=${startIndex}`
+    return fetch(`${API_BASE}/volumes?q=${books}${URL_PARAMS}&key=${AUTHENTICAION}`)
 }
